@@ -1,0 +1,34 @@
+apiVersion: apps/v1
+kind: ReplicaSet
+metadata:
+  name: rs-01
+  labels:
+    app: nginx
+spec:
+  # modify replicas according to your case
+  replicas: 3
+  selector: # replicaset refers to label and assigns replicaset
+    matchLabels: #this is important
+      app: nginx
+  template:
+    metadata:
+      labels:
+        app: nginx
+    spec: #container specs
+      containers:
+        - name: nginx
+          image: docker.io/nginx
+
+---
+#below pod wont get created, above replicaset is created with name and below pod is created with same name hence
+#always maintain unique label
+apiVersion: v1
+kind: Pod
+metadata:
+  name: rs-01-pod
+  labels:
+    app: nginx
+spec:
+  containers:
+    - name: nginx
+      image: docker.io/nginx

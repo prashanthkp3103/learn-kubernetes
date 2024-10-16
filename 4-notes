@@ -1,0 +1,17 @@
+https://kubernetes.io/docs/reference/kubernetes-api/workload-resources/
+octant - UI - for minikube -sudo labauto
+
+kubectl get ns
+
+NAME              STATUS   AGE
+default           Active   61m
+kube-node-lease   Active   61m
+kube-public       Active   61m
+kube-system       Active   61m
+
+when pod created, pod would be created under default name space
+
+kubectl get nodes
+kubectl get nodes -A
+
+kubectl api-resources
