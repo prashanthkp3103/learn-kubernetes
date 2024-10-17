@@ -15,3 +15,14 @@ kubectl get nodes
 kubectl get nodes -A
 
 kubectl api-resources
+kubectl get pods --watch
+kubectl exec -it debug --bash
+    curl nginx-06
+    curl nginx-06.default.svc.cluster.local
+    default : namespace
+    nginx-06: service name
+
+k8s contect
+aws eks update-kubeconfig --name <name of the cluster>
+cat .kube/config
+kubectl get pods -A

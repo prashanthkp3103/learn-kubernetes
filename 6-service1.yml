@@ -1,0 +1,66 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: nginx
+  labels:
+    appName: nginx
+    example: service
+spec:
+  containers:
+    - name: nginx
+      image: docker.io/nginx
+
+---
+#clusterip - default
+apiVersion: v1
+kind: Service
+metadata:
+  name: nginix-06
+spec:
+  selector:
+    appName: nginx
+    example: service
+  ports:
+    - protocol: TCP
+      port: 80
+      targetPort: 80
+
+---
+apiVersion: v1
+kind: Pod
+metadata:
+  name: debug-06
+spec:
+  containers:
+    - name: debug
+      image: debug/rkalluru/debug
+
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: nginix-06-np
+spec:
+  type: NodePort
+  selector:
+    appName: nginx
+    example: service
+  ports: # if we dont specify it will open random port
+    - protocol: TCP
+      port: 80
+      targetPort: 80
+
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: nginix-06-np
+spec:
+  type: LoadBalancer
+  selector:
+    appName: nginx
+    example: service
+  ports:
+    - protocol: TCP
+      port: 80
+      targetPort: 80
