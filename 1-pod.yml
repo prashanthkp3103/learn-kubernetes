@@ -1,6 +1,3 @@
-#kubernetes.io
-#documentation, reference-kubernetes API - workload-resources
-
 apiVersion: v1
 kind: Pod
 metadata:
