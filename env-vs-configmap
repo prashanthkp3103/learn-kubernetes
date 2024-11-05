@@ -1,0 +1,14 @@
+env	  : all the properties are given to pod as env in hardcored value
+Configmap : can be used in realtime
+            store non-confidential data in key-value pairs.Pods can consume ConfigMaps as environment variables
+            direct key value pair to pod
+            referencing from config properties whatever needed
+            referring to entire config followed file configmap name
+            defining as volume to pod and referring it as mount path
+secret: this should come centralized place, cant be used in realtime
+        contains a small amount of sensitive data such as a password, a token, or a key
+        base64 format
+        we can define as key value to pod
+        or
+        we can mount the secret file to pod
+        this is no use as anyone can convert and see the secret

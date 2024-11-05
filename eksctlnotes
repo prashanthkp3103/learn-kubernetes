@@ -1,0 +1,8 @@
+#Documentation
+#https://eksctl.io/usage/creating-and-managing-clusters/
+eksctl create cluster -f eksctl.yaml
+
+#to get the cluster context
+aws eks update-kubeconfig --name basic-cluster
+
+#kubectl get nodes

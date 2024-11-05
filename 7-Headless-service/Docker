@@ -1,0 +1,20 @@
+FROM nginx
+COPY run.sh
+ENTRYPOINT ["bash", "/run.sh"]
+
+
+run.sh
+rm -rf /usr/share/nginx/html/*
+echo "Hello From $(hostname)" >/usr/share/nginx/html/index/html
+nginx -g "daemon off;"
+
+docker run --entrypoint hostname nginx
+docker build .
+docker run -d <image id>
+docker ps
+docker logs <container id>
+docker login docker.io
+username
+password
+docker tag <image id> docker.io/rkalluru/nginx:hostname-print
+docker push docker.io/rkalluru/nginx:hostname-print

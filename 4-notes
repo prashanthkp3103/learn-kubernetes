@@ -26,3 +26,6 @@ k8s contect
 aws eks update-kubeconfig --name <name of the cluster>
 cat .kube/config
 kubectl get pods -A
+kubectl get pods -o wide
+
+kubectl top -to monitor node/pod

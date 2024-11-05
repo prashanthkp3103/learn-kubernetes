@@ -54,12 +54,28 @@ spec:
 apiVersion: v1
 kind: Service
 metadata:
-  name: nginix-06-np
+  name: nginix-06-lb
 spec:
   type: LoadBalancer
   selector:
     appName: nginx
     example: service
+  ports:
+    - protocol: TCP
+      port: 80
+      targetPort: 80
+
+---
+#Headless service
+apiVersion: v1
+kind: Service
+metadata:
+  name: nginix-06-headless
+spec:
+  selector:
+    appName: nginx
+    example: service
+  clusterIP: None #headless service
   ports:
     - protocol: TCP
       port: 80

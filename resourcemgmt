@@ -1,0 +1,19 @@
+When you specify a Pod, you can optionally specify how much of each resource a container needs. The most common resources to specify are CPU and memory (RAM); there are others.
+When you specify the resource request for containers in a Pod, the kube-scheduler uses this information to decide which node to place the Pod on.
+When you specify a resource limit for a container, the kubelet enforces those limits so that the running container is not allowed to use more of that resource than the limit you set.
+The kubelet also reserves at least the request amount of that system resource specifically for that container to use.
+
+
+For each container, you can specify resource limits and requests, including the following:
+spec.containers[].resources.limits.cpu
+spec.containers[].resources.limits.memory
+spec.containers[].resources.limits.hugepages-<size>
+
+spec.containers[].resources.requests.cpu
+spec.containers[].resources.requests.memory
+spec.containers[].resources.requests.hugepages-<size>
+
+what is request and limit?
+if the resource is there it will allocate otherwise wont
+request : i want this resource must and should schedule for the pod ( this is mandatory)
+limit: if available it will allocate (like a salary bonus)

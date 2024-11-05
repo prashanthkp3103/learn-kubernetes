@@ -1,0 +1,60 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: deploy-07
+  labels:
+    app: nginx
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: nginx
+  template:
+    metadata:
+      labels:
+        app: nginx
+    spec:
+      containers:
+        - name: nginx
+          image: docker.io/rkalluru/nginx:hostname-print
+          ports:
+            - containerPort: 80
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: nginix-07
+spec:
+  selector:
+    app: nginx
+  ports:
+    - protocol: TCP
+      port: 80
+      targetPort: 80
+
+#creating a pod
+#kubectl run debug --image=docker.io/rkalluru/debug
+#kubectl exec -it debug -- bash
+#curl nginx-07
+#here u got response from service
+
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: nginix-07-headless
+spec:
+  clusterIP: NONE
+  selector:
+    app: nginx
+  ports:
+    - protocol: TCP
+      port: 80
+      targetPort: 80
+
+#kubectl exec -it debug -- bash
+#there is no much difference from normal service and headless service
+#kubectl logs -f -l app=nginx
+#curl nginx-07-headless
+#nslookup nginx-07-headless
+#it works with statefulset to understand this concept

@@ -1,0 +1,11 @@
+Normal service just distribute the traffic to pods for communication
+If one chef (pod) is busy or unavailable, the service can still handle orders by directing them to another available chef.
+
+
+headless service :
+A Headless Service allows external applications to interact with each pod directly.
+This is useful when you want to manage or monitor each pod separately, like when the friends decide to meet up without a group organizer.
+This setup is common in situations where applications might need to perform tasks that are closely tied to specific pods, like with databases where each pod can hold different data.
+
+mongodb cluster --> (write) --both comes here--primary --replica(secondary)
+		    (read)			       --replica(secondary)
